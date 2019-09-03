@@ -23,10 +23,7 @@ class RestrauntBillingSystem {
      * @param category is an integer number that decides the category selected
      * The list of categories is as follows: Starters, Main Course, and Desserts
      * */
-
-    /**
-     * checking working of git bash from command line
-     **/
+    
     fun showMenuForCategory(category: Int) {
 
 

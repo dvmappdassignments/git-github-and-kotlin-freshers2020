@@ -28,18 +28,21 @@ showMenuForCategory()
 fun showMenuForCategory() {
   println("1-Starters  2-Main Course  3-Desserts 4-Display Bill 5-Select items")
   selection=scanner.nextInt()
-  println("********Menu********")
+  
   if(selection==1){
+    println("********Menu********")
   for ((index, items) in starters.withIndex()){
     println("${index+1} - ${items.first()} for ${items.last()}")}
     selectedCategory=starters
   showMenuForCategory()
   }else if(selection==2){
+    println("********Menu********")
   for ((index, items) in mainCourse.withIndex()){
     println("${index+1} - ${items.first()} for ${items.last()}")}
     selectedCategory=mainCourse
   showMenuForCategory()
   }else if(selection==3){
+    println("********Menu********")
   for ((index, items) in desserts.withIndex()){
     println("${index+1} - ${items.first()} for ${items.last()}")}
     selectedCategory=desserts

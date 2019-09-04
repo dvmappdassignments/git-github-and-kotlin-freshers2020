@@ -6,7 +6,6 @@
  * This process is repeated until the waiter has entered all the dishes, which will be communicated by entering a special symbol
  * */
 import java.util.*
-
 private val input=Scanner(System.`in`)
 private val starters= arrayOf<String>("Spring Roll","Potatoes in Honey & Chilly","Chilly Mushroom Dry","Veg. Manchurian Dry")
 private val mainCourse= arrayOf<String>("Veg Chopsouey","Sweet & Sour Veg","Mix. Veg. in Garlic Sauce","Paneer Butter Masala")
@@ -17,7 +16,6 @@ private val dessertsPrice= arrayOf<Int>(295,175,385,210)
 private var starterCount= arrayOf<Int>(0,0,0,0)
 private var mainCourseCount= arrayOf<Int>(0,0,0,0)
 private var dessertsCount= arrayOf<Int>(0,0,0,0)
-
 fun main() {
     var category:Int
     category=1
@@ -27,7 +25,6 @@ fun main() {
         showMenuForCategory(category)
     }
 }
-
 /**
  * This function will display the list of items available in the selected category
  * @param category is an integer number that decides the category selected
@@ -58,9 +55,7 @@ fun showMenuForCategory(category: Int) {
     }
     val menuChoice: Int = input.nextInt()
     addItemToBill(menuChoice,category)
-
 }
-
 /**
  * The work of this function is to add a new item to the bill
  * You are free to decide the types of parameters and return type for this function
@@ -72,7 +67,6 @@ fun addItemToBill(menuChoice1: Int,category1: Int) {
         3 -> dessertsCount[menuChoice1-1]+=1
     }
 }
-
 /**
  * This function displays the final bill to the user
  * The bill should contain the name of the restaurant, the items selected, their price, quantity and cost

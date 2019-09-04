@@ -7,10 +7,18 @@
  * */
 import java.util.*
 
-val input=Scanner(System.`in`)
-var totalBill:Int = 0
-fun main() {
+private val input=Scanner(System.`in`)
+private val starters= arrayOf<String>("Spring Roll","Potatoes in Honey & Chilly","Chilly Mushroom Dry","Veg. Manchurian Dry")
+private val mainCourse= arrayOf<String>("Veg Chopsouey","Sweet & Sour Veg","Mix. Veg. in Garlic Sauce","Paneer Butter Masala")
+private val desserts= arrayOf<String>("Warm Apple Crostata","Gulaab Jaamun","Grill Cheesecake","Choco Lava Cake")
+private val startersPrice= arrayOf<Int>(145,175,155,135)
+private val mainCoursePrice= arrayOf<Int>(195,175,185,210)
+private val dessertsPrice= arrayOf<Int>(295,175,385,210)
+private var starterCount= arrayOf<Int>(0,0,0,0)
+private var mainCourseCount= arrayOf<Int>(0,0,0,0)
+private var dessertsCount= arrayOf<Int>(0,0,0,0)
 
+fun main() {
     var category:Int
     category=1
     while(category!=4) {
@@ -18,7 +26,6 @@ fun main() {
         category = input.nextInt()
         showMenuForCategory(category)
     }
-    displayBill()
 }
 
 /**
@@ -26,16 +33,7 @@ fun main() {
  * @param category is an integer number that decides the category selected
  * The list of categories is as follows: Starters, Main Course, and Desserts
  * */
-
 fun showMenuForCategory(category: Int) {
-    var item:String
-    val price:Int
-    val starters= arrayOf<String>("Spring Roll","Potatoes in Honey & Chilly","Chilly Mushroom Dry","Veg. Manchurian Dry")
-    val mainCourse= arrayOf<String>("Veg Chopsouey","Sweet & Sour Veg","Mix. Veg. in Garlic Sauce","Paneer Butter Masala")
-    val desserts= arrayOf<String>("Warm Apple Crostata","Gulaab Jaamun","Grill Cheesecake","Choco Lava Cake")
-    val startersPrice= arrayOf<Int>(145,175,155,135)
-    val mainCoursePrice= arrayOf<Int>(195,175,185,210)
-    val dessertsPrice= arrayOf<Int>(295,175,385,210)
     if (category==1) {
         println("1 -"+starters[0]+"             "+startersPrice[0]+"-/")
         println("2 -"+starters[1]+"             "+startersPrice[1]+"-/")
@@ -59,22 +57,20 @@ fun showMenuForCategory(category: Int) {
         return
     }
     val menuChoice: Int = input.nextInt()
-    when (category) {
-        1 -> addItemToBill(starters[menuChoice-1],startersPrice[menuChoice-1])
-        2 -> addItemToBill(mainCourse[menuChoice-1],mainCoursePrice[menuChoice-1])
-        3 -> addItemToBill(desserts[menuChoice-1],dessertsPrice[menuChoice-1])
-    }
+    addItemToBill(menuChoice,category)
+
 }
 
 /**
  * The work of this function is to add a new item to the bill
  * You are free to decide the types of parameters and return type for this function
  * */
-fun addItemToBill(foodItem: String,itemPrice: Int) {
-
-
-
-    totalBill += itemPrice
+fun addItemToBill(menuChoice1: Int,category1: Int) {
+    when (category1) {
+        1 -> starterCount[menuChoice1-1]+=1
+        2 -> mainCourseCount[menuChoice1-1]+=1
+        3 -> dessertsCount[menuChoice1-1]+=1
+    }
 }
 
 /**
@@ -83,6 +79,29 @@ fun addItemToBill(foodItem: String,itemPrice: Int) {
  * The bill should also display the final amount to be paid
  * */
 fun displayBill() {
-
-
+    var price:Int
+    var totalBill:Int = 0
+    println("**************PIZZERIA DINING**************")
+    for(i in 0 until 4){
+        if(starterCount[i]!=0){
+            price=startersPrice[i]*starterCount[i]
+            totalBill += price
+            println(starters[i]+"         "+"Quantity-"+starterCount[i]+"      Price="+price+"-/")
+        }
+    }
+    for(i in 0 until 4){
+        if(mainCourseCount[i]!=0){
+            price=mainCoursePrice[i]*mainCourseCount[i]
+            totalBill += price
+            println(mainCourse[i]+"         "+"Quantity-"+mainCourseCount[i]+"      Price="+price+"-/")
+        }
+    }
+    for(i in 0 until 4){
+        if(dessertsCount[i]!=0){
+            price=dessertsPrice[i]*dessertsCount[i]
+            totalBill += price
+            println(desserts[i]+"         "+"Quantity-"+dessertsCount[i]+"      Price="+price+"-/")
+        }
+    }
+    print("TOTAL BILL=  "+totalBill+"-/")
 }

@@ -8,7 +8,7 @@
 import java.util.*
 var scanner=Scanner(System.`in`)
 var selectedCategory=mutableListOf<Array<String>>()
-val starters=mutableListOf(arrayOf("2-Bananas", "10000"), arrayOf("Soluchan", "10"), arrayOf("Vimal", "500"))
+val starters=mutableListOf(arrayOf("2-Bananas", "10000"), arrayOf("Soluchan", "10"), arrayOf("Vimal", "500"), arrrayOf("Rinkia ke Papad", "400"))
 val mainCourse=mutableListOf(arrayOf("Chick 'n Biryani", "300"), arrayOf("Butt 'r Paneer", "50"), arrayOf("Katle-t", "500"))
 val desserts=mutableListOf(arrayOf("Babu Shona", "1"), arrayOf("Sweet Cyanide", "100000"), arrayOf("Fructose+Fehling Soluchan", "2000"))
 var order =mutableListOf<Array<String>>()

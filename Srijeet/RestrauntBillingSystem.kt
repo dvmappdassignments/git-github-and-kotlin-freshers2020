@@ -17,7 +17,7 @@ var finalPrice = 0
 var finalBillQuantity = Array(15) {0}
 var finalBillPrice = Array(15) {0}
 var check = true
-var f = 0;
+var flag1 = 0;
 
 fun main(args: Array<String>) {
     menuStarters = arrayOf("1.Samosas","2.Fries","3.Cutlet","4.Pakoras","5.Fruit Salad")
@@ -54,19 +54,19 @@ fun main(args: Array<String>) {
  * */
 fun showMenuForCategory(typeOfMenu: Int) {
     println("The selected menu is")
-    for(loop in 0..4 step 1)
+    for(i in 0..4 step 1)
     {
         if(typeOfMenu==1)
         {
-            println(menuStarters[loop]+"\tpriced at\t"+menuStartersPrice[loop])
+            println(menuStarters[i]+"\tpriced at\t"+menuStartersPrice[i])
         }
         if(typeOfMenu==2)
         {
-            println(menuMainCourse[loop]+"\tpriced at\t"+menuMainCoursePrice[loop])
+            println(menuMainCourse[i]+"\tpriced at\t"+menuMainCoursePrice[i])
         }
         if(typeOfMenu==3)
         {
-            println(menuDesserts[loop]+"\tpriced at\t"+menuDessertsPrice[loop])
+            println(menuDesserts[i]+"\tpriced at\t"+menuDessertsPrice[i])
         }
     }
 }
@@ -84,10 +84,10 @@ fun addItemToBill() {
          * For example to add Fried Rice to bill write to code 2.2.4
          * Wherein 2.2.4 First 2 gives the category of menu, Second 2 gives the particular food in given menu, and 4 gives number of plates
          */
-        var g=0;
+        var flag2 = 0;
         val reader = Scanner(System.`in`)
         var addBillCode = reader.next()
-        if(addBillCode=="$")
+        if(addBillCode =="$")
         {
             check = false
         }
@@ -97,63 +97,63 @@ fun addItemToBill() {
             var menuFood = addBillCode.substring(2,3).toInt()-1
             var quantity = addBillCode.substring(4,5).toInt()
             //checking if the added food item is already in bill or not
-            for(loop in 0 until f step 1)
+            for(i in 0 until flag1 step 1)
             {
                 if(menuCategory==1)
                 {
-                    if(menuStarters[menuFood]==finalBill[loop])
+                    if(menuStarters[menuFood]==finalBill[i])
                     {
-                        g++
-                        finalBillQuantity[loop] += quantity
+                        flag2++
+                        finalBillQuantity[i] += quantity
                         finalPrice += (quantity * menuStartersPrice[menuFood])
                         break
                     }
                 }
                 if(menuCategory==2)
                 {
-                    if(menuMainCourse[menuFood]==finalBill[loop])
+                    if(menuMainCourse[menuFood]==finalBill[i])
                     {
-                        g++
-                        finalBillQuantity[loop] += quantity
+                        flag2++
+                        finalBillQuantity[i] += quantity
                         finalPrice += (quantity * menuMainCoursePrice[menuFood])
                         break
                     }
                 }
                 if(menuCategory==3)
                 {
-                    if(menuDesserts[menuFood]==finalBill[loop])
+                    if(menuDesserts[menuFood]==finalBill[i])
                     {
-                        g++
-                        finalBillQuantity[loop] += quantity
+                        flag2++
+                        finalBillQuantity[i] += quantity
                         finalPrice += (quantity * menuDessertsPrice[menuFood])
                         break
                     }
                 }
             }
-            if(g==0)
+            if(flag2==0)
             {
                 if(menuCategory==1)
                 {
-                    finalBill[f] = menuStarters[menuFood]
-                    finalBillQuantity[f] = quantity
+                    finalBill[flag1] = menuStarters[menuFood]
+                    finalBillQuantity[flag1] = quantity
                     finalPrice += quantity*menuStartersPrice[menuFood]
-                    finalBillPrice[f] = menuStartersPrice[menuFood]
+                    finalBillPrice[flag1] = menuStartersPrice[menuFood]
                 }
                 if(menuCategory==2)
                 {
-                    finalBill[f] = menuMainCourse[menuFood]
-                    finalBillQuantity[f] = quantity
+                    finalBill[flag1] = menuMainCourse[menuFood]
+                    finalBillQuantity[flag1] = quantity
                     finalPrice += quantity*menuMainCoursePrice[menuFood]
-                    finalBillPrice[f] = menuMainCoursePrice[menuFood]
+                    finalBillPrice[flag1] = menuMainCoursePrice[menuFood]
                 }
                 if(menuCategory==3)
                 {
-                    finalBill[f] = menuDesserts[menuFood]
-                    finalBillQuantity[f] = quantity
+                    finalBill[flag1] = menuDesserts[menuFood]
+                    finalBillQuantity[flag1] = quantity
                     finalPrice += quantity*menuDessertsPrice[menuFood]
-                    finalBillPrice[f] = menuDessertsPrice[menuFood]
+                    finalBillPrice[flag1] = menuDessertsPrice[menuFood]
                 }
-                 f++
+                 flag1++
             }
 
         }
@@ -169,9 +169,9 @@ fun displayBill() {
     println("The final bill is")
     println("Restaurant name: All night canteen")
     println("The items ordered are")
-    for(loop in 0 until f step 1)
+    for(i in 0 until flag1 step 1)
     {
-        println(finalBill[loop]+"\t"+finalBillPrice[loop]+"\t quantity \t"+finalBillQuantity[loop])
+        println(finalBill[i]+"\t"+finalBillPrice[i]+"\t quantity \t"+finalBillQuantity[i])
     }
     println("final price\t"+finalPrice)
 }

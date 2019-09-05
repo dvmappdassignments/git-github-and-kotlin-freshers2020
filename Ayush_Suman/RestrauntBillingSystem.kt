@@ -53,7 +53,7 @@ fun showMenuForCategory() {
   }else if (selection==5){
   println("Select items...  Enter 0 to go back to Menu Categories")
   selection=scanner.nextInt()
-  if(selection<=selectedCategory.size){
+  if(selection<=selectedCategory.size and selection>=0){
     if(selection!=0){
   println("Enter Quantity")
   quant=scanner.nextInt()
@@ -79,7 +79,7 @@ fun showMenuForCategory() {
 fun addItemToBill(item:Array<String>, quantity:Int){
 if(quantity==0){println("Select items...  Enter 0 to go back to Menu Categories")
   selection=scanner.nextInt()
-  if(selection<=selectedCategory.size){
+  if(selection<=selectedCategory.size and selection>=0){
     if(selection!=0){
   println("Enter Quantity")
   quant=scanner.nextInt()
@@ -94,7 +94,7 @@ if(quantity==0){println("Select items...  Enter 0 to go back to Menu Categories"
     ordered=1
 println("Enter next item to be added... Enter 0 to go back to Menu Categories")
 selection=scanner.nextInt()
-if(selection<=selectedCategory.size){
+if(selection<=selectedCategory.size and selection>=0){
 if(selection!=0){
 println("Enter Quantity")
 quant=scanner.nextInt()

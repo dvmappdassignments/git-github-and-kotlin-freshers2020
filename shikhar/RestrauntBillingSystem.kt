@@ -22,6 +22,10 @@ fun main() {
     while(category!=4) {
         println("1-Starters  2-Main Course  3-Desserts  4-Display Bill")
         category = input.nextInt()
+        if(category<1 || category>4){
+            println("Invalid Input")
+            continue
+        }
         showMenuForCategory(category)
     }
 }
@@ -53,7 +57,11 @@ fun showMenuForCategory(category: Int) {
         displayBill()
         return
     }
-    val menuChoice: Int = input.nextInt()
+    var menuChoice: Int = input.nextInt()
+    while(menuChoice<1 || menuChoice>4){
+        println("Invalid Input.Re-Enter Choice of Dish-")
+        menuChoice=input.nextInt()
+    }
     addItemToBill(menuChoice,category)
 }
 /**
@@ -61,10 +69,12 @@ fun showMenuForCategory(category: Int) {
  * You are free to decide the types of parameters and return type for this function
  * */
 fun addItemToBill(menuChoice1: Int,category1: Int) {
+    println("Enter Quantity of Item-")
+    var quantity:Int=input.nextInt()
     when (category1) {
-        1 -> starterCount[menuChoice1-1]+=1
-        2 -> mainCourseCount[menuChoice1-1]+=1
-        3 -> dessertsCount[menuChoice1-1]+=1
+        1 -> starterCount[menuChoice1-1]+=quantity
+        2 -> mainCourseCount[menuChoice1-1]+=quantity
+        3 -> dessertsCount[menuChoice1-1]+=quantity
     }
 }
 /**

@@ -7,7 +7,11 @@
  * */
 
 fun main(args: Array<String>) {
-
+  println(" Please input the following number to select the category of food to be billed" + 
+          " Input 1 for Starters, Input 2 for Main Course, Input 3 for Desserts and * to end billing");
+  
+  
+  
 }
 
 /**
